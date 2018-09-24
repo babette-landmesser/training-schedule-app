@@ -1,0 +1,93 @@
+%clearfix {
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin clearfix() {
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin hidden-span() {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+
+@mixin hidden-text() {
+    font-size: 0;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@mixin for-phone-only {
+    @media (max-width: 480px) { @content; }
+}
+
+@mixin for-tablet-portrait-up {
+    @media (min-width: 481px) { @content; }
+}
+
+@mixin for-tablet-portait-only {
+    @media (min-width: 481px) and (max-width: 768px) { @content; }
+}
+
+@mixin for-tablet-landscape-up {
+    @media (min-width: 1024px) { @content; }
+}
+
+@mixin for-tablet-landscape-only {
+    @media (min-width: 769px) and (max-width: 1024px) { @content; }
+}
+
+@mixin for-desktop-up {
+    @media (min-width: 1024px) { @content; }
+}
+
+@mixin for-desktop-only {
+    @media (min-width: 1200px) and (max-width: 1799px) { @content; }
+}
+
+@mixin for-big-desktop-up {
+    @media (min-width: 1800px) { @content; }
+}
+
+@function calculate-rem($size) {
+    $rem-size: $size / 16px;
+    @return #{$rem-size}rem;
+}
+
+$browser-context: 16;
+@function calculate-em($pixels, $context: $browser-context) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return $pixels / $context * 1em;
+}
+
+@mixin font-size($size) {
+    font-size: calculate-rem($size);
+}
+
+@mixin line-height($size) {
+    line-height: calculate-rem($size);
+}

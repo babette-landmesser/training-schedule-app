@@ -1,0 +1,57 @@
+<h1>{{ workout?.date | date: 'dd.MM.yyyy' }} - today's workout</h1>
+
+<div class="container">
+  <app-workout-set-list></app-workout-set-list>
+</div>
+
+<button (click)="addNewSet()" class="btn" *ngIf="!model">
+  Add Set
+</button>
+<button (click)="markWorkoutAsDone()" class="btn btn-primary">Workout done!</button>
+
+<form *ngIf="model" (submit)="submitNewSetInWorkout()" #addSetForm="ngForm">
+  <h2>Neues Set</h2>
+  <div class="form-group">
+    <select class="form-select"
+            [(ngModel)]="model.equipment_id"
+            name="equipmentId"
+            #equipmentId="ngModel"
+            required
+            (change)="setSelectedEquipment($event)">
+      <option [value]="null">-- Gerät wählen --</option>
+      <option [value]="equipment.id" *ngFor="let equipment of equipments">{{equipment.name}}</option>
+    </select>
+  </div>
+
+  <div *ngIf="model.equipment_id">
+    <div *ngIf="selectedEquipment.stress_type === 'DURATION'" class="form-group">
+      <label class="form-label" for="duration">Duration (in sec)</label>
+      <input class="form-input"
+             type="text"
+             id="duration"
+             name="duration"
+             [required]="true"
+             [(ngModel)]="model.duration">
+    </div>
+    <div *ngIf="selectedEquipment.stress_type === 'REPETITION'" class="form-group">
+      <label class="form-label" for="repetition">Repetition</label>
+      <input class="form-input"
+             type="text"
+             id="repetition"
+             name="repetition"
+             [required]="true"
+             [(ngModel)]="model.repetition">
+    </div>
+    <div *ngIf="selectedEquipment.stress_type === 'REPETITION'" class="form-group">
+      <label class="form-label" for="weight">Weight (in kg)</label>
+      <input class="form-input"
+             type="text"
+             id="weight"
+             name="weight"
+             [required]="true"
+             [(ngModel)]="model.weight">
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Set speichern</button>
+</form>
