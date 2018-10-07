@@ -31,4 +31,9 @@ export class WorkoutsService {
     );
   }
 
+  getAllWorkoutsForUser(): Observable<Workout[]> {
+    return this.httpClient.get<HttpResponse>(this.env.apiPath + 'workouts')
+      .map(response => response.response as Workout[]);
+  }
+
 }

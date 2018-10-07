@@ -1,6 +1,6 @@
 <h1>{{ workout?.date | date: 'dd.MM.yyyy' }} - today's workout</h1>
 
-<div class="container" *ngIf="workout">
+<div class="container set__list" *ngIf="workout">
   <app-workout-set-list [workoutId]="workout.id"></app-workout-set-list>
 </div>
 

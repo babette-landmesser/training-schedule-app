@@ -1,1 +1,14 @@
-<button (click)="createNewWorkout()">New Workout</button>
+<div class="container workouts">
+  <h2>
+    Workouts:
+    <button class="float-right btn btn-primary" (click)="createNewWorkout()">New Workout</button>
+  </h2>
+  <table class="table table-striped">
+    <tbody>
+    <tr *ngFor="let workout of workouts">
+      <td>{{ workout.date | date: 'dd.MM.yyyy'}}</td>
+      <td><a (click)="goToWorkout(workout.id)"><i class="icon icon-forward"></i></a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
