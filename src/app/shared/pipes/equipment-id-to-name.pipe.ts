@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/shareReplay';
 import { Equipment } from '../../core/models/equipment';
 import { EquipmentService } from '../../core/services/equipment.service';
 
@@ -20,6 +21,7 @@ export class EquipmentIdToNamePipe implements PipeTransform {
         this.equipmentService
           .getEquipmentById(value)
           .map(result => this.getName(result))
+          .shareReplay(1)
       );
     }
     return this.requestedEquipment.get(value);

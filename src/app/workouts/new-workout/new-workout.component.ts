@@ -66,6 +66,7 @@ export class NewWorkoutComponent implements OnInit {
   }
 
   markWorkoutAsDone() {
-
+    delete this.model;
+    this.router.navigate(['/workouts']);
   }
 }

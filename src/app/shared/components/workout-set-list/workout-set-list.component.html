@@ -1,3 +1,14 @@
-<div *ngFor="let set of sets">
-  {{ set.equipment_id | equipmentIdToName | async  }}
+<div class="workout-sets row__head">
+  <div><strong>Übung</strong></div>
+  <div><strong>Dauer</strong></div>
+  <div><strong>Wiederholungen</strong></div>
+  <div><strong>Gewicht</strong></div>
+</div>
+<div *ngFor="let set of sets; let even = even; let odd = odd;"
+     [ngClass]="{ 'row__even': even, 'row__odd': odd }"
+     class="workout-sets">
+  <div>{{ set.equipment_id | equipmentIdToName | async  }}</div>
+  <div>{{ set.duration | filterZeroToDash }}</div>
+  <div>{{ set.repetition }}</div>
+  <div>{{ set.weight }}</div>
 </div>
