@@ -21,15 +21,6 @@ export class WorkoutsListComponent implements OnInit {
     );
   }
 
-  createNewWorkout() {
-    this.workoutsService.createNewWorkout().subscribe(
-      result => {
-        this.workoutsService.storeWorkoutIdAsCurrentWorkout(result.response.insertId);
-        this.router.navigate(['/workouts/new-workout/' + result.response.insertId]);
-      }
-    );
-  }
-
   goToWorkout(workoutId: number) {
     this.router.navigate(['/workouts/new-workout/' + workoutId]);
   }

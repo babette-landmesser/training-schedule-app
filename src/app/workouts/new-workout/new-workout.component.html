@@ -1,13 +1,13 @@
-<h1>{{ workout?.date | date: 'dd.MM.yyyy' }} - today's workout</h1>
+<h3>{{ workout?.date | date: 'dd.MM.yyyy' }}</h3>
 
 <div class="container set__list" *ngIf="workout">
   <app-workout-set-list [workoutId]="workout.id"></app-workout-set-list>
 </div>
 
 <button (click)="addNewSet()" class="btn" *ngIf="!model">
-  Add Set
+  Set hinzufügen
 </button>
-<button (click)="markWorkoutAsDone()" class="btn btn-primary">Workout done!</button>
+<button (click)="markWorkoutAsDone()" class="btn btn-primary">Workout fertig</button>
 <button (click)="deleteWorkout()" class="btn btn-error"><i class="icon icon-delete">  </i></button>
 
 <form *ngIf="model" (submit)="submitNewSetInWorkout()" #addSetForm="ngForm">

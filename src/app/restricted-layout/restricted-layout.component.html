@@ -1,3 +1,12 @@
+<header class="navbar">
+  <section class="navbar-section">
+    <a routerLink="/workouts" class="navbar-brand mr-2">Workouts</a>
+  </section>
+  <section class="navbar-section">
+    <button class="btn btn-primary btn-lg" (click)="createNewWorkout()">New Workout</button>
+    <button class="btn btn-primary btn-action btn-lg" (click)="logout()"><i class="icon icon-shutdown"></i></button>
+  </section>
+</header>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

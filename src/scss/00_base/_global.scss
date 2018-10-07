@@ -217,3 +217,13 @@ hr {
   bottom: 0;
   right: 0;
 }
+
+.navbar {
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 1px #eee;
+
+  button {
+    margin-left: 10px;
+  }
+}
