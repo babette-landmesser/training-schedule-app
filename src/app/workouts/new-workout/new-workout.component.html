@@ -8,6 +8,7 @@
   Add Set
 </button>
 <button (click)="markWorkoutAsDone()" class="btn btn-primary">Workout done!</button>
+<button (click)="deleteWorkout()" class="btn btn-error"><i class="icon icon-delete">  </i></button>
 
 <form *ngIf="model" (submit)="submitNewSetInWorkout()" #addSetForm="ngForm">
   <h2>Neues Set</h2>

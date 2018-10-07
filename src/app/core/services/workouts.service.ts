@@ -36,4 +36,7 @@ export class WorkoutsService {
       .map(response => response.response as Workout[]);
   }
 
+  deleteWorkout(workoutId: number) {
+    return this.httpClient.delete(this.env.apiPath + 'workouts/' + workoutId);
+  }
 }

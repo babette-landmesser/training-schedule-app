@@ -69,4 +69,10 @@ export class NewWorkoutComponent implements OnInit {
     delete this.model;
     this.router.navigate(['/workouts']);
   }
+
+  deleteWorkout() {
+    this.workoutService.deleteWorkout(this.workout.id).subscribe(
+      result => this.router.navigate(['/workouts'])
+    );
+  }
 }
